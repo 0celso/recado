@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem do Celso recebida</title>
+  <style>
+    body {
+      background-color: #b81414;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    button {
+      background-color: white;
+      color: #b81414;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Mensagem do Celso recebida</h1>
+  <button id="abrir">Abrir</button>
+
+  <div id="conteudo" style="display: none;">
+    <h1>Vem dormir comigo hoje?</h1>
+    <div class="buttons-container">
+      <button id="sim">Sim</button>
+      <button id="nao">Não</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('abrir').addEventListener('click', function() {
+      document.body.innerHTML = '<h1>Vem dormir comigo hoje?</h1><div class="buttons-container"><button id="sim">Sim</button><button id="nao">Não</button></div>';
+
+      const simButton = document.getElementById('sim');
+      const naoButton = document.getElementById('nao');
+
+      simButton.addEventListener('click', function() {
+        document.body.innerHTML = '<img src="https://i.imgur.com/jEMNbUh.jpg" alt="Imagem">';
+      });
+
+      naoButton.addEventListener('click', function() {
+        const randomX = Math.floor(Math.random() * (window.innerWidth - naoButton.offsetWidth));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - naoButton.offsetHeight));
+
+        naoButton.style.position = 'absolute';
+        naoButton.style.left = `${randomX}px`;
+        naoButton.style.top = `${randomY}px`;
+      });
+    });
+  </script>
+</body>
+</html>
